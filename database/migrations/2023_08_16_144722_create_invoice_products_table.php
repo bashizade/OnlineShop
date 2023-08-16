@@ -18,6 +18,7 @@ class CreateInvoiceProductsTable extends Migration
             $table->bigInteger('invoice_id')->unsigned()->index();
             $table->bigInteger('product_id')->unsigned()->index();
             $table->integer('count');
+            $table->integer('price');
             $table->timestamps();
         });
     }

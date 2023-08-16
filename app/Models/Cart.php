@@ -10,4 +10,9 @@ class Cart extends Model
     use HasFactory;
 
     protected $fillable = ['user_id','product_id','count'];
+
+    public function product(): \Illuminate\Database\Eloquent\Relations\HasOne
+    {
+        return $this->hasOne(Product::class,'id','product_id');
+    }
 }

@@ -10,4 +10,9 @@ class Product extends Model
     use HasFactory;
 
     protected $fillable = ['title','description','image','price','price_off','status'];
+
+    public function category(): \Illuminate\Database\Eloquent\Relations\HasMany
+    {
+        return $this->hasMany(ProductCategory::class,'product_id','id');
+    }
 }

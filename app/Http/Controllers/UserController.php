@@ -6,6 +6,7 @@ use App\Http\Requests\Address\CreateRequest;
 use App\Http\Requests\Address\UpdateRequest;
 use App\Http\Requests\UserUpdateRequest;
 use App\Models\Address;
+use App\Models\Invoice;
 use App\Models\Product;
 use App\Models\User;
 use App\Models\UserProductsFavorite;
@@ -17,6 +18,12 @@ class UserController extends Controller
     {
         $user = User::query()->findOrFail(auth()->id());
         return view('',compact('user'));
+    }
+
+    public function user_invoice()
+    {
+        $invoice = Invoice::query()->where('user_id',auth()->id())->get();
+        return view('',compact('invoice'));
     }
 
     public function update(UserUpdateRequest $request,User $user)
